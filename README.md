@@ -45,47 +45,80 @@ pizza_name NVARCHAR(80)
 
 ```
 
-## Data analysis and Exploration
-
 ```sql
 SELECT * FROM pizza_sales;
 ```
-# Total Revenue:
+
+# Data analysis and Exploration
+
+
+## Total Revenue:
 
 ```sql
 SELECT SUM(total_price) AS Total_Revenue FROM pizza_sales;
+
 ```
 
-Link: ![Image](https://github.com/user-attachments/assets/f77f1048-47ae-4f35-b6df-69f3a1793f86)
+ ![Image](https://github.com/user-attachments/assets/f77f1048-47ae-4f35-b6df-69f3a1793f86)
 
-# Average Order Values:
+## Average Order Values:
+
+```sql
 SELECT SUM(total_price) / count(Distinct order_id) as Average_order_values FROM pizza_sales;
 
-Link: ![Image](https://github.com/user-attachments/assets/edc44400-d09a-419c-8a89-8c755e6b93e3)
+```
 
-# Total Pizza Sold:
+ ![Image](https://github.com/user-attachments/assets/edc44400-d09a-419c-8a89-8c755e6b93e3)
+
+## Total Pizza Sold:
+
+```sql
 SELECT SUM(quantity) as Total_pizza_sold from pizza_sales;
-Link: ![Image](https://github.com/user-attachments/assets/590b611f-517c-4af9-b0f8-57d04bb608c5)
 
-# Total Orders:
+```
+
+ ![Image](https://github.com/user-attachments/assets/590b611f-517c-4af9-b0f8-57d04bb608c5)
+
+## Total Orders:
+
+```sql
+
 SELECT COUNT(Distinct order_id) as Total_orders FROM pizza_sales;
-Link: ![Image](https://github.com/user-attachments/assets/ba7119b4-5d3a-452b-bcf6-7167f0b464c7)
 
-# Average Pizza Per Order
+```
+
+![Image](https://github.com/user-attachments/assets/ba7119b4-5d3a-452b-bcf6-7167f0b464c7)
+
+## Average Pizza Per Order
+
+```sql
+
 SELECT CAST(CAST(SUM(quantity) AS DECIMAL(10,2))/
 CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2)) AS DECIMAL(10,2)) AS 
 Avg_pizzas_per_order FROM pizza_sales;
-Link: ![Image](https://github.com/user-attachments/assets/ca3949b1-0ae8-4362-be74-e98643beb0a0)
+
+```
+
+![Image](https://github.com/user-attachments/assets/ca3949b1-0ae8-4362-be74-e98643beb0a0)
 
 
---# HourlyTrend For Total Pizzas Sold
+## HourlyTrend For Total Pizzas Sold
+
+```sql
 SELECT DATEPART(HOUR, order_time) as order_hour, sum(quantity) as Total_pizza_sold
-FROM pizza_sales
-GROUP BY DATEPART(HOUR, order_time)
-ORDER BY DATEPART(HOUR,order_time);
-Link: ![Image](https://github.com/user-attachments/assets/4a16e1d0-b8b9-4495-856f-3766ff48fa31)
 
---# weeklyTrend For Total Order
+FROM pizza_sales
+
+GROUP BY DATEPART(HOUR, order_time)
+
+ORDER BY DATEPART(HOUR,order_time);
+
+```
+![Image](https://github.com/user-attachments/assets/4a16e1d0-b8b9-4495-856f-3766ff48fa31)
+
+## weeklyTrend For Total Order
+
+```sql
 SELECT DATEPART(ISO_WEEK, order_date) AS week_number, year(order_date) AS order_year,
 COUNT(DISTINCT order_id) as Total_orders from pizza_sales
 Group by DATEPART(ISO_WEEK, order_date), year(order_date)
