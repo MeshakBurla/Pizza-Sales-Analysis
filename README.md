@@ -18,7 +18,7 @@ https://app.powerbi.com/links/uPAnL-8gAk?ctid=51302999-bb18-4fba-98bf-3a7ab3f07f
   Enhance Customer Experience – Use insights to improve delivery times, menu offerings, and marketing strategies.
 Project structure
 
-### 1.Database Setup
+## Database Setup
 
 •	**Database Creation**: The project starts by creating named `pizza`.
 
