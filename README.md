@@ -194,7 +194,7 @@ ORDER BY SUM(quantity) ASC;
 
 *A card visual was used to represent count of Total Revenue*.
 
-Link: ![Image](https://github.com/user-attachments/assets/ad9f50fd-01ee-4e0b-8377-0d1f14ac8f54)
+![Image](https://github.com/user-attachments/assets/ad9f50fd-01ee-4e0b-8377-0d1f14ac8f54)
 
 *A card visual was used to represent the count of Total Pizza Sold*.
 
