@@ -47,10 +47,15 @@ pizza_name NVARCHAR(80)
 
 ## Data analysis and Exploration
 
-
+```sql
 SELECT * FROM pizza_sales;
+```
 # Total Revenue:
+
+```sql
 SELECT SUM(total_price) AS Total_Revenue FROM pizza_sales;
+```
+
 Link: ![Image](https://github.com/user-attachments/assets/f77f1048-47ae-4f35-b6df-69f3a1793f86)
 
 # Average Order Values:
