@@ -1,9 +1,12 @@
 # Pizza-Sales-Analysis
 
-## Project overview
+# Project overview
 **Title**: pizza sales analysis
+
 **Leve**l: Beginner
+
 **Database**: pizza	
+
 # Dashboard link: 
 https://app.powerbi.com/links/uPAnL-8gAk?ctid=51302999-bb18-4fba-98bf-3a7ab3f07f13&pbi_source=linkShare
 
