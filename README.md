@@ -1,10 +1,11 @@
 # Pizza-Sales-Analysis
 
-Project overview
-Title: pizza sales analysis
-Level: Beginner
-Database: pizza	
-Dashboard link: https://app.powerbi.com/links/uPAnL-8gAk?ctid=51302999-bb18-4fba-98bf-3a7ab3f07f13&pbi_source=linkShare
+## Project overview
+**Title**: pizza sales analysis
+**Leve**l: Beginner
+**Database**: pizza	
+# Dashboard link: 
+https://app.powerbi.com/links/uPAnL-8gAk?ctid=51302999-bb18-4fba-98bf-3a7ab3f07f13&pbi_source=linkShare
 
 # Objectives:
   Identify Best-Selling Pizzas – Determine which pizza types, sizes, and toppings generate the highest sales.
