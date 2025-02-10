@@ -213,18 +213,22 @@ ORDER BY SUM(quantity) ASC;
 **Order Month**:
 
          Order Month = UPPER(LEFT(pizza_sales[Month Name],3))
-
-         
- 
+        
 *Following DAX expression was written to find Total Revenue*.
+
+**Total Revenue**
 
           Total Revenue = SUM(pizza_sales[total_price])
 
 *Following DAX expression was written to find Total Orders*.
 
+**Total Orders**
+
              Total Orders = DISTINCTCOUNT(pizza_sales[order_id])
              
 *Following DAX expression was written to find Total Pizza Sold*.
+
+**Total Pizza Sold**
 
             Total Pizza Sold = SUM(pizza_sales[quantity])
 
