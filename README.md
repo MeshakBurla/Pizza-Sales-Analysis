@@ -106,11 +106,8 @@ Avg_pizzas_per_order FROM pizza_sales;
 
 ```sql
 SELECT DATEPART(HOUR, order_time) as order_hour, sum(quantity) as Total_pizza_sold
-
 FROM pizza_sales
-
 GROUP BY DATEPART(HOUR, order_time)
-
 ORDER BY DATEPART(HOUR,order_time);
 
 ```
@@ -119,28 +116,32 @@ ORDER BY DATEPART(HOUR,order_time);
 ## weeklyTrend For Total Order
 
 ```sql
+
 SELECT DATEPART(ISO_WEEK, order_date) AS week_number, year(order_date) AS order_year,
 COUNT(DISTINCT order_id) as Total_orders from pizza_sales
 Group by DATEPART(ISO_WEEK, order_date), year(order_date)
 order by DATEPART(ISO_WEEK, order_date), year(order_date);
-link: ![Image](https://github.com/user-attachments/assets/57d7c88c-ebe0-4d87-83fe-c517fbc6e504)
+```
 
-#  Pizza Category Total Sales And Percentages
+![Image](https://github.com/user-attachments/assets/57d7c88c-ebe0-4d87-83fe-c517fbc6e504)
+
+## Pizza Category Total Sales And Percentages
+
+```sql
+
 SELECT pizza_category, SUM(total_price) as Total_sales, SUM(total_price) * 100 /
 (SELECT SUM(total_price) FROM pizza_sales WHERE MONTH(order_date) = 1)
 AS PTC from pizza_sales
 WHERE MONTH(order_date) = 1
 GROUP BY pizza_category;
-Link: ![Image](https://github.com/user-attachments/assets/c03d6882-4b11-4deb-91df-f2a65d2de084)
+
+```
+![Image](https://github.com/user-attachments/assets/c03d6882-4b11-4deb-91df-f2a65d2de084)
 
 
+## Pizza Size Total Sales And Percentages
 
-
-
-
-
-
-# Pizza Size Total Sales And Percentages
+```sql
 
 SELECT pizza_size,CAST(SUM(total_price) AS DECIMAL(10,2)) AS Total_sales,
 CAST(SUM(total_price) * 100/ (SELECT SUM(total_price) FROM pizza_sales
@@ -148,68 +149,89 @@ WHERE DATEPART(quarter, order_date)= 1) AS DECIMAL(10,2)) AS PCT FROM pizza_sale
 WHERE DATEPART(quarter, order_date) = 1 
 GROUP BY pizza_size
 ORDER BY PCT DESC;
-Link: ![Image](https://github.com/user-attachments/assets/83e6a184-7dd3-4b3d-9ee6-90db03607ac0)
 
+```
 
+![Image](https://github.com/user-attachments/assets/83e6a184-7dd3-4b3d-9ee6-90db03607ac0)
 
+## Total Revenue Of Pizzas
 
-# Total Revenue Of Pizzas
+```sql
 
 SELECT TOP 5 pizza_name, sum(total_price) as Total_Revenue FROM pizza_sales
 GROUP BY pizza_name
 ORDER BY pizza_name ASC;
-Link: ![Image](https://github.com/user-attachments/assets/f72101e4-a490-47db-bed5-1ed74e5e5719)
 
+```
+![Image](https://github.com/user-attachments/assets/f72101e4-a490-47db-bed5-1ed74e5e5719)
 
-# Total Pizzas Sold
+## Total Pizzas Sold
+
+```sql
 SELECT TOP 5 pizza_name, sum(quantity) as Total_pizzas_sold
 FROM pizza_sales
 WHERE MONTH(order_date) = 8
 GROUP BY pizza_name
 ORDER BY SUM(quantity) ASC;
-Link: ![Image](https://github.com/user-attachments/assets/fc6bcbc1-5019-43e5-9c1f-aa66c5ab90f5)
+
+```
+![Image](https://github.com/user-attachments/assets/fc6bcbc1-5019-43e5-9c1f-aa66c5ab90f5)
 
 
 # Visualization
+
 ## Pizza Sales Dashboard Report 1
-snapshot1:![Image](https://github.com/user-attachments/assets/1857010a-25ac-4d57-8d1c-672e62e2a000)
+
+## snapshot1:![Image](https://github.com/user-attachments/assets/1857010a-25ac-4d57-8d1c-672e62e2a000)
+
 ## Pizza Sales Dashboard Report 2
 
 ## snapshot2:![Image](https://github.com/user-attachments/assets/ca307663-0bd3-4eb8-bdff-c8abe876aaa6)
 
-Publishing To Power BI
-Link: ![Image](https://github.com/user-attachments/assets/26e01dcb-c203-47c6-ae87-e0e9cbeb1e0a)
+# Publishing To Power BI
 
-A card visual was used to represent count of Total Revenue.
+![Image](https://github.com/user-attachments/assets/26e01dcb-c203-47c6-ae87-e0e9cbeb1e0a)
+
+*A card visual was used to represent count of Total Revenue*.
 
 Link: ![Image](https://github.com/user-attachments/assets/ad9f50fd-01ee-4e0b-8377-0d1f14ac8f54)
 
- 
-A card visual was used to represent the count of Total Pizza Sold.
- Link: ![Image](https://github.com/user-attachments/assets/a9e09c39-efa3-4e27-8eb5-f479bb010b62)
+*A card visual was used to represent the count of Total Pizza Sold*.
 
-A card visual was used to represent count of Total orders.
-Link: ![Image](https://github.com/user-attachments/assets/cf7ada1c-5113-4530-993a-badaf0acb5c3)
- Creating a new column following DAX expression was write.
+![Image](https://github.com/user-attachments/assets/a9e09c39-efa3-4e27-8eb5-f479bb010b62)
+
+*A card visual was used to represent count of Total orders*.
+
+![Image](https://github.com/user-attachments/assets/cf7ada1c-5113-4530-993a-badaf0acb5c3)
+
+ *Creating a new column following DAX expression was write*.
+ 
 **Order Day**:
+
          Order Day = UPPER(LEFT(pizza_sales[Day Name],3))
+         
 **Order Month**:
+
          Order Month = UPPER(LEFT(pizza_sales[Month Name],3))
 
          
  
-Following DAX expression was written to find Total Revenue.
+*Following DAX expression was written to find Total Revenue*.
+
           Total Revenue = SUM(pizza_sales[total_price])
 
-Following DAX expression was written to find Total Orders.
+*Following DAX expression was written to find Total Orders*.
+
              Total Orders = DISTINCTCOUNT(pizza_sales[order_id])
-Following DAX expression was written to find Total Pizza Sold.
+             
+*Following DAX expression was written to find Total Pizza Sold*.
+
             Total Pizza Sold = SUM(pizza_sales[quantity])
 
 # Conclusion
 Pizza sales analysis reveals that pepperoni and large-sized pizzas are the top sellers, with peak sales during dinner hours and weekends. Combo deals and discounts boost revenue, while seasonal trends affect demand. Optimizing inventory, improving delivery efficiency, and offering loyalty programs can enhance sales and customer satisfaction.
 
-**How to use**:
+# How to use:
 
 1.**clone the Repository**: Clone this project repository from GitHub.
 
